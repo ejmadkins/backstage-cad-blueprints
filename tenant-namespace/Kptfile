@@ -4,4 +4,11 @@ metadata:
   name: tenant-namespace
   annotations:
     config.kubernetes.io/local-config: "true"
-info: {}
+info:
+  description: ""
+pipeline:
+  mutators:
+  - image: gcr.io/kpt-fn/set-namespace:v0.4.1
+    configPath: package-context.yaml
+  - image: gcr.io/kpt-fn/apply-replacements:v0.1.1
+    configPath: apply-replacements.yaml
